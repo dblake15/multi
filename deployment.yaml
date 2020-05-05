@@ -15,16 +15,16 @@ spec:
       containers:
       - name: frontend
         image: gcr.io/conductive-fold-275020/frontend:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
         ports:
         - containerPort: 5000
       - name: backend
         image: gcr.io/conductive-fold-275020/backend:latest
-        resources:
-          limits:
-            cpu: "500m"
+        # resources:
+        #   limits:
+        #     cpu: "500m"
         ports:
         - containerPort: 5001

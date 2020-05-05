@@ -18,7 +18,7 @@ steps:
     args:
     - run
     - --filename=deployment.yaml
-    - --image=gcr.io/conductive-fold-275020/frontend:latest
-    - --image=gcr.io/conductive-fold-275020/backend:latest
+    # - --image=gcr.io/conductive-fold-275020/frontend:latest
+    # - --image=gcr.io/conductive-fold-275020/backend:latest
     - --location=us-central1-c
     - --cluster=cluster-1
