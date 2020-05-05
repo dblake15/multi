@@ -1,0 +1,51 @@
+# Be sure to change the environment variables below for DOCKERUSER and DOCKERPASS
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: launch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: launch
+  template:
+    metadata:
+      labels:
+        app: launch
+    spec:
+      containers:
+      - name: launch-frontend
+        image: stolaunch/launchfrontend:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+      - name: launch-backend
+        image: stolaunch/launchbackend:latest
+        env:
+        - name: dblake15
+          value: "stolaunch"
+        - name: capstoneproject
+          value: "launchpass"
+        - name: NAMESPACE
+          value: "cir-anders-namespace"
+        #- name: DEPLOYED
+        #  value: "True"
+        resources:
+          limits:
+            cpu: "500m"
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-socket-volume
+        securityContext:
+            privileged: true
+      volumes:
+        - name: docker-socket-volume
+          hostPath:
+              path: /var/run/docker.sock
+              type: File
