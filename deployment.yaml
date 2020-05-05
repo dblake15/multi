@@ -3,49 +3,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: launch
+  name: gke-launch
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: launch
+      app: gke-launch
   template:
     metadata:
       labels:
-        app: launch
+        app: gke-launch
     spec:
       containers:
-      - name: launch-frontend
-        image: stolaunch/launchfrontend:latest
+      - name: frontend
+        image: gcr.io/conductive-fold-275020/frontend:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 5000
-      - name: launch-backend
-        image: stolaunch/launchbackend:latest
-        env:
-        - name: dblake15
-          value: "stolaunch"
-        - name: capstoneproject
-          value: "launchpass"
-        - name: NAMESPACE
-          value: "cir-anders-namespace"
-        #- name: DEPLOYED
-        #  value: "True"
+      - name: backend
+        image: gcr.io/conductive-fold-275020/backend:latest
         resources:
           limits:
             cpu: "500m"
         ports:
         - containerPort: 5001
-        volumeMounts:
-          - mountPath: /var/run/docker.sock
-            name: docker-socket-volume
-        securityContext:
-            privileged: true
-      volumes:
-        - name: docker-socket-volume
-          hostPath:
-              path: /var/run/docker.sock
-              type: File
