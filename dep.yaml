@@ -1,18 +1,16 @@
-
-# Be sure to change the environment variables below for DOCKERUSER and DOCKERPASS
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: gke-launch
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app
+      app: gke-launch
   template:
     metadata:
       labels:
-        app: app
+        app: gke-launch
     spec:
       containers:
       - name: frontend
