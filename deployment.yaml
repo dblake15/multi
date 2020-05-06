@@ -30,8 +30,8 @@ spec:
           value: "launchpass"
         - name: NAMESPACE
           value: "cir-anders-namespace"
-        - name: DEPLOYED
-         value: "True"
+        # - name: DEPLOYED
+        #  value: "True"
         resources:
           limits:
             cpu: "500m"
