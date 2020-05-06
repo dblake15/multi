@@ -16,6 +16,10 @@ steps:
     # deploy container image to GKE
   - name: "gcr.io/cloud-builders/kubectl"
     args: ["apply", "-f","deployment.yaml"]
+    env:
+      - CLOUDSDK_COMPUTE_REGION=$_CUSTOM_REGION
+      - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
+      - KUBECONFIG=/workspace/.kube/config
 
   - name: "gcr.io/cloud-builders/kubectl"
     args: ["expose", "deployment", "gke-launch", "--type=LoadBalancer", "--name=gke-service"]
@@ -25,3 +29,6 @@ steps:
   #   - --filename=deployment.yaml
   #   - --location=us-central1-c
   #   - --cluster=cluster-1
+  substitutions:
+    _CUSTOM_REGION: us-central1-c
+    _CUSTOM_CLUSTER: cluster-1
