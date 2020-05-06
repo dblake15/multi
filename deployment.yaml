@@ -21,29 +21,29 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
-      # - name: backend
-      #   image: gcr.io/conductive-fold-275020/backend:latest
-      #   env:
-      #   - name: dblake15
-      #     value: "stolaunch"
-      #   - name: capstoneproject
-      #     value: "launchpass"
-      #   - name: NAMESPACE
-      #     value: "cir-anders-namespace"
-      #   #- name: DEPLOYED
-      #   #  value: "True"
-      #   resources:
-      #     limits:
-      #       cpu: "500m"
-      #   ports:
-      #   - containerPort: 5001
-      #   volumeMounts:
-      #     - mountPath: /var/run/docker.sock
-      #       name: docker-socket-volume
-      #   securityContext:
-      #       privileged: true
-      # volumes:
-      #   - name: docker-socket-volume
-      #     hostPath:
-      #         path: /var/run/docker.sock
-      #         type: File
+      - name: backend
+        image: gcr.io/conductive-fold-275020/backend:latest
+        env:
+        - name: dblake15
+          value: "stolaunch"
+        - name: capstoneproject
+          value: "launchpass"
+        - name: NAMESPACE
+          value: "cir-anders-namespace"
+        - name: DEPLOYED
+         value: "True"
+        resources:
+          limits:
+            cpu: "500m"
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-socket-volume
+        securityContext:
+            privileged: true
+      volumes:
+        - name: docker-socket-volume
+          hostPath:
+              path: /var/run/docker.sock
+              type: File
