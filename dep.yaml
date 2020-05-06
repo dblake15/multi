@@ -1,0 +1,25 @@
+
+# Be sure to change the environment variables below for DOCKERUSER and DOCKERPASS
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/conductive-fold-275020/frontend:latest
+        ports:
+        - containerPort: 8080
+     - name:  backend
+        image: gcr.io/conductive-fold-275020/backend:latest
+        ports:
+        - containerPort: 8081
