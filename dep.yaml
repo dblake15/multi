@@ -1,23 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-launch
+name: gke-launch
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: gke-launch
-  template:
-    metadata:
-      labels:
-        app: gke-launch
-    spec:
-      containers:
-      - name: frontend
-        image: gcr.io/conductive-fold-275020/frontend:latest
-        ports:
-        - containerPort: 8080
-     - name:  backend
-        image: gcr.io/conductive-fold-275020/backend:latest
-        ports:
-        - containerPort: 8081
+replicas: 1
+selector:
+matchLabels:
+    app: gke-launch
+template:
+metadata:
+    labels:
+    app: gke-launch
+spec:
+    containers:
+    - name: frontend
+    image: gcr.io/conductive-fold-275020/frontend:latest
+    # resources:
+    #   limits:
+    #     memory: "128Mi"
+    #     cpu: "500m"
+    ports:
+    - containerPort: 5000
+    - name: backend
+    image: gcr.io/conductive-fold-275020/backend:latest
+    # resources:
+    #   limits:
+    #     cpu: "500m"
+    ports:
+    - containerPort: 5001

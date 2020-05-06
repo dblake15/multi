@@ -17,7 +17,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=dep.yaml
+    - --filename=deployment.yaml
     # - --image=gcr.io/conductive-fold-275020/frontend:latest
     # - --image=gcr.io/conductive-fold-275020/backend:latest
     - --location=us-central1-c
