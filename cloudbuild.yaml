@@ -21,12 +21,12 @@ steps:
       - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
       - KUBECONFIG=/workspace/.kube/config
 
-  - name: "gcr.io/cloud-builders/kubectl"
-    args: ["expose", "deployment", "gke-launch", "--type=LoadBalancer", "--name=gke-service"]
-    env:
-      - CLOUDSDK_COMPUTE_REGION=$_CUSTOM_REGION
-      - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
-      - KUBECONFIG=/workspace/.kube/config
+  # - name: "gcr.io/cloud-builders/kubectl"
+  #   args: ["expose", "deployment", "gke-launch", "--type=LoadBalancer", "--name=gke-service"]
+  #   env:
+  #     - CLOUDSDK_COMPUTE_REGION=$_CUSTOM_REGION
+  #     - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
+  #     - KUBECONFIG=/workspace/.kube/config
       
 substitutions:
   _CUSTOM_REGION: us-central1-c
