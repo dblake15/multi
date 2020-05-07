@@ -20,9 +20,15 @@ placed in their main code folder so that we can dynamically update ip addresses.
 Better ideas for this will be gladly accepted.
 '''
 try:
-    f = open('backend_ip', 'r')
-    backend_host = f.readline().replace('\n', '').replace(' ', '').replace('"', '').replace("'", "")
-    backend_port = f.readline().replace('\n', '').replace(' ', '').replace('"', '').replace("'", "")
+    host_str = request.host
+    ret = ''
+    for c in host_str:
+        if c == ":":
+            break
+        else:
+            ret += c
+    backend_host = ret
+    backend_port = '5001'
 except:
     backend_host = '127.0.0.1'
     backend_port = '5001'
