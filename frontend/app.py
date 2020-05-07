@@ -30,8 +30,8 @@ try:
     backend_host = ret
     backend_port = '5001'
 except:
-    backend_host = '127.0.0.1'
-    backend_port = '5001'
+     backend_host = '127.0.0.1'
+     backend_port = '5001'
 
 logger.info("Backend IP is: " + backend_host + ":" + backend_port)
 
@@ -135,4 +135,4 @@ def help():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(use_reloader=True, host='0.0.0.0', port=5000)
+    app.run(use_reloader=True, host='0.0.0.0', port= 5000)
