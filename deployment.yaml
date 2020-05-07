@@ -28,13 +28,13 @@ spec:
           value: "cir-anders-namespace"
         ports:
         - containerPort: 5001
-        volumeMounts:
-          - mountPath: /var/run/docker.sock
-            name: docker-socket-volume
-        securityContext:
-            privileged: true
-      volumes:
-        - name: docker-socket-volume
-          hostPath:
-              path: /var/run/docker.sock
-              type: File
+      #   volumeMounts:
+      #     - mountPath: /var/run/docker.sock
+      #       name: docker-socket-volume
+      #   securityContext:
+      #       privileged: true
+      # volumes:
+      #   - name: docker-socket-volume
+      #     hostPath:
+      #         path: /var/run/docker.sock
+      #         type: File
