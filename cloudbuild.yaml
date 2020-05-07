@@ -27,7 +27,6 @@ steps:
   #     - CLOUDSDK_COMPUTE_REGION=$_CUSTOM_REGION
   #     - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
   #     - KUBECONFIG=/workspace/.kube/config
-      
 substitutions:
   _CUSTOM_REGION: us-central1-c
   _CUSTOM_CLUSTER: cluster-1
