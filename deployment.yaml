@@ -17,17 +17,17 @@ spec:
         image: gcr.io/conductive-fold-275020/frontend:latest
         ports:
         - containerPort: 5000
-      - name: backend
-        image: gcr.io/conductive-fold-275020/fronted:latest
-        env:
-        - name: dblake15
-          value: "stolaunch"
-        - name: capstoneproject
-          value: "launchpass"
-        - name: NAMESPACE
-          value: "cir-anders-namespace"
-        ports:
-        - containerPort: 5001
+      # - name: backend
+      #   image: gcr.io/conductive-fold-275020/fronted:latest
+      #   env:
+      #   - name: dblake15
+      #     value: "stolaunch"
+      #   - name: capstoneproject
+      #     value: "launchpass"
+      #   - name: NAMESPACE
+      #     value: "cir-anders-namespace"
+      #   ports:
+      #   - containerPort: 5001
       #   volumeMounts:
       #     - mountPath: /var/run/docker.sock
       #       name: docker-socket-volume
