@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: gke-launch
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: gke-launch
@@ -18,23 +18,23 @@ spec:
         ports:
         - containerPort: 5000
       - name: backend
-        image: gcr.io/conductive-fold-275020/frontend:latest
-        # env:
-        # - name: dblake15
-        #   value: "stolaunch"
-        # - name: capstoneproject
-        #   value: "launchpass"
-        # - name: NAMESPACE
-        #   value: "cir-anders-namespace"
+        image: gcr.io/conductive-fold-275020/backend:latest
+        env:
+        - name: dblake15
+          value: "stolaunch"
+        - name: capstoneproject
+          value: "launchpass"
+        - name: NAMESPACE
+          value: "cir-anders-namespace"
         ports:
         - containerPort: 5001
-      #   volumeMounts:
-      #     - mountPath: /var/run/docker.sock
-      #       name: docker-socket-volume
-      #   securityContext:
-      #       privileged: true
-      # volumes:
-      #   - name: docker-socket-volume
-      #     hostPath:
-      #         path: /var/run/docker.sock
-      #         type: File
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-socket-volume
+        securityContext:
+            privileged: true
+      volumes:
+        - name: docker-socket-volume
+          hostPath:
+              path: /var/run/docker.sock
+              type: File
